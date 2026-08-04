@@ -1,0 +1,1577 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BÀI H6.01: THỰC ĐƠN VÀNG CHO TUỔI DẬY THÌ - NOVA HOSPITAL</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@600;700;800&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+  <style>
+    /* DESIGN SYSTEM: DIGITAL HEALTH (Y TẾ KỸ THUẬT SỐ) - PERFECTLY CENTERED & DOCTOR CONCEPT STAGES */
+    /* Color Tokens: #0F766E (Teal Primary), #0C4E4B (Dark 4E4B), #E6F7F5 (Subtle Light Cyan), #F9FAFB (Very Light Gray), #DC2626 (Stethoscope Red) */
+    
+    * { box-sizing: border-box; margin: 0; padding: 0; user-select: none; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #F9FAFB url('hinh-nen-powerpoint-y-te-38.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #1E293B;
+      min-height: 100vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Light Subtle Overlay */
+    .bg-overlay {
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(249, 250, 251, 0.85);
+      backdrop-filter: blur(4px);
+      z-index: 0;
+    }
+
+    /* Main Container */
+    #app {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      width: 100vw;
+    }
+
+    /* Header */
+    header {
+      height: 75px;
+      padding: 0 35px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 2.5px solid #0F766E;
+      background: rgba(230, 247, 245, 0.96);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 4px 15px rgba(12, 78, 75, 0.1);
+    }
+    .header-left, .header-right { display: flex; align-items: center; gap: 18px; }
+    .btn-header {
+      background: #FFFFFF;
+      border: 2px solid #0F766E;
+      color: #0F766E;
+      padding: 10px 22px;
+      border-radius: 22px;
+      font-weight: 700;
+      font-size: 15px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex; align-items: center; gap: 8px;
+      box-shadow: 0 2px 6px rgba(15, 118, 110, 0.12);
+    }
+    .btn-header:hover {
+      background: #0F766E;
+      color: #FFFFFF;
+      box-shadow: 0 4px 14px rgba(15, 118, 110, 0.3);
+      transform: translateY(-1px);
+    }
+    .brand-badge {
+      display: flex; align-items: center; gap: 12px;
+      background: #FFFFFF;
+      border: 2px solid #0F766E;
+      padding: 8px 22px; border-radius: 30px;
+      box-shadow: 0 2px 10px rgba(15, 118, 110, 0.15);
+    }
+    .brand-badge .icon { font-size: 22px; }
+    .brand-badge .text {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800; font-size: 16px;
+      color: #0C4E4B;
+      letter-spacing: 0.5px;
+    }
+    .stage-badge {
+      background: #E6F7F5;
+      border: 2px solid #0F766E;
+      color: #0C4E4B;
+      padding: 8px 20px; border-radius: 22px;
+      font-size: 15px; font-weight: 800;
+    }
+
+    /* Slide Viewport */
+    .viewport {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 45px;
+      position: relative;
+    }
+    .slide {
+      display: none;
+      width: 100%;
+      max-width: 1420px;
+      height: 100%;
+      max-height: 880px;
+      background: rgba(255, 255, 255, 0.97);
+      border: 3px solid #0F766E;
+      border-radius: 28px;
+      box-shadow: 0 20px 50px rgba(12, 78, 75, 0.18);
+      padding: 45px 55px;
+      backdrop-filter: blur(16px);
+      flex-direction: column;
+      position: relative;
+      animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .slide.active { display: flex; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.98) translateY(10px); }
+      to { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    /* Headers inside slides */
+    .slide-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 38px; font-weight: 800;
+      color: #0C4E4B;
+      margin-bottom: 20px;
+      display: flex; align-items: center; gap: 16px;
+      border-bottom: 3px solid #0F766E;
+      padding-bottom: 16px;
+      text-wrap: balance;
+      width: 100%;
+    }
+    .slide-title .tag {
+      font-size: 15px; font-weight: 800;
+      padding: 6px 16px; border-radius: 14px;
+      background: #E6F7F5;
+      color: #0F766E; border: 2px solid #0F766E;
+    }
+
+    /* Slide Body - PERFECT VERTICAL & HORIZONTAL CENTERING FOR ALL SLIDES */
+    .slide-body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 24px;
+      overflow-y: auto;
+      padding: 10px 5px;
+      width: 100%;
+      margin: auto 0;
+    }
+    .slide-body::-webkit-scrollbar { width: 6px; }
+    .slide-body::-webkit-scrollbar-thumb { background: #0F766E; border-radius: 4px; }
+
+    /* Footer Navigation */
+    footer {
+      height: 75px;
+      padding: 0 35px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 2.5px solid #0F766E;
+      background: rgba(230, 247, 245, 0.96);
+      backdrop-filter: blur(12px);
+    }
+    .btn-nav {
+      background: linear-gradient(135deg, #0F766E, #0C4E4B);
+      color: #FFFFFF;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800; font-size: 16px;
+      padding: 14px 32px; border-radius: 30px;
+      border: none; cursor: pointer;
+      box-shadow: 0 4px 15px rgba(15, 118, 110, 0.35);
+      transition: all 0.2s ease;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .btn-nav:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(15, 118, 110, 0.55);
+    }
+    .btn-nav:disabled {
+      opacity: 0.4; cursor: not-allowed; box-shadow: none;
+    }
+    .slide-counter {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 19px; font-weight: 800;
+      color: #0C4E4B;
+      background: #E6F7F5;
+      border: 2px solid #0F766E;
+      padding: 8px 24px; border-radius: 24px;
+    }
+    .key-hint {
+      font-size: 14px; color: #334155; font-weight: 700;
+    }
+
+    /* Grid & Cards UI - Centered Layouts */
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; width: 100%; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; width: 100%; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; width: 100%; }
+    .card {
+      background: #FFFFFF;
+      border: 2px solid rgba(15, 118, 110, 0.3);
+      border-radius: 20px;
+      padding: 30px;
+      min-height: 250px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      transition: all 0.2s ease;
+      box-shadow: 0 6px 16px rgba(12, 78, 75, 0.08);
+      width: 100%;
+    }
+    .card:hover {
+      border-color: #0F766E;
+      background: #E6F7F5;
+      transform: translateY(-4px);
+      box-shadow: 0 12px 25px rgba(12, 78, 75, 0.16);
+    }
+    .card-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 24px; font-weight: 800;
+      color: #0C4E4B; margin-bottom: 16px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .card-desc { font-size: 20px; line-height: 1.7; color: #334155; }
+
+    /* PATIENT DOSSIERS WITH PLAIN TEXT (NO PRE-HIGHLIGHT) */
+    .dossier-card {
+      background: #FFFFFF;
+      border: 2.5px solid #0F766E;
+      border-radius: 22px; padding: 28px;
+      min-height: 320px;
+      transition: all 0.3s ease;
+      position: relative; overflow: hidden;
+      display: flex; flex-direction: column; justify-content: flex-start;
+      box-shadow: 0 6px 18px rgba(12, 78, 75, 0.08);
+      width: 100%;
+    }
+    .dossier-card:hover {
+      border-color: #0C4E4B;
+      box-shadow: 0 10px 25px rgba(15, 118, 110, 0.18);
+    }
+    .patient-badge {
+      background: #DC2626; color: white;
+      font-size: 14px; font-weight: 800;
+      padding: 6px 14px; border-radius: 10px;
+      display: inline-block; margin-bottom: 14px; align-self: flex-start;
+    }
+    .dossier-text {
+      font-size: 19px; line-height: 1.85; color: #1E293B; font-weight: 500;
+    }
+
+    /* KEYWORD INTERACTION: PLAIN TEXT INITIALLY, DOUBLE-BLINK & RED UNDERLINE AFTER SELECTION */
+    .kw-habit {
+      cursor: pointer;
+      padding: 2px 4px;
+      border-radius: 6px;
+      background: transparent;
+      border: none;
+      color: inherit;
+      font-weight: inherit;
+      display: inline;
+      transition: all 0.2s ease;
+    }
+    .kw-habit:hover {
+      background: rgba(15, 118, 110, 0.12);
+      border-radius: 4px;
+    }
+
+    /* Flashing highlight animation (Blinks 2 times) */
+    @keyframes doubleBlink {
+      0% { background: #FEE2E2; color: #DC2626; transform: scale(1); }
+      25% { background: #DC2626; color: #FFFFFF; transform: scale(1.1); box-shadow: 0 0 18px rgba(220, 38, 38, 0.7); }
+      50% { background: #FEE2E2; color: #DC2626; transform: scale(1); }
+      75% { background: #DC2626; color: #FFFFFF; transform: scale(1.1); box-shadow: 0 0 18px rgba(220, 38, 38, 0.7); }
+      100% { background: #FEE2E2; color: #DC2626; transform: scale(1); }
+    }
+    .kw-habit.flashing {
+      animation: doubleBlink 0.9s cubic-bezier(0.16, 1, 0.3, 1) 1;
+      display: inline-block;
+    }
+
+    /* PERMANENT STATE AFTER FINDING: RED UNDERLINE (GẠCH CHÂN) + HIGHLIGHT RED TINT */
+    .kw-habit.found {
+      background: #FEE2E2 !important;
+      color: #DC2626 !important;
+      font-weight: 800 !important;
+      text-decoration: underline !important;
+      text-decoration-color: #DC2626 !important;
+      text-decoration-thickness: 3px !important;
+      border-bottom: 3.5px solid #DC2626 !important;
+      border-radius: 6px;
+      padding: 2px 8px;
+      display: inline-block;
+      cursor: default;
+      pointer-events: none;
+    }
+
+    /* Monospace Timer Box with Start Button */
+    .timer-box {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 24px; font-weight: 800;
+      color: #DC2626;
+      background: #FEE2E2;
+      border: 2px solid #DC2626;
+      padding: 6px 18px; border-radius: 16px;
+      display: inline-flex; align-items: center; gap: 12px;
+    }
+    .btn-timer-start {
+      background: #059669; color: white;
+      border: none; padding: 6px 14px; border-radius: 12px;
+      font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 800;
+      cursor: pointer; transition: all 0.2s ease;
+    }
+    .btn-timer-start:hover { background: #047857; transform: scale(1.05); }
+
+    /* Game Tap-to-Connect Matrix */
+    .matrix-container {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 35px;
+      position: relative; width: 100%;
+    }
+    .matrix-col { display: flex; flex-direction: column; gap: 18px; z-index: 10; }
+    .matrix-item {
+      background: #FFFFFF;
+      border: 2.5px solid rgba(15, 118, 110, 0.35);
+      padding: 20px 26px; border-radius: 18px;
+      font-size: 20px; font-weight: 700; color: #1E293B; cursor: pointer;
+      transition: all 0.2s ease; display: flex; align-items: center; justify-content: space-between;
+      min-height: 72px;
+      box-shadow: 0 4px 12px rgba(12, 78, 75, 0.06);
+    }
+    .matrix-item:hover {
+      border-color: #0F766E; background: #E6F7F5; transform: scale(1.01);
+    }
+    .matrix-item.selected {
+      border-color: #0F766E; background: #E6F7F5;
+      box-shadow: 0 0 20px rgba(15, 118, 110, 0.35);
+    }
+    .matrix-item.matched {
+      border-color: #059669; background: #D1FAE5;
+      color: #065F46; cursor: default;
+    }
+
+    /* Connecting Lines */
+    #matrixSvg line {
+      animation: drawLine 0.4s ease-out forwards;
+    }
+    @keyframes drawLine {
+      from { stroke-dashoffset: 200; }
+      to { stroke-dashoffset: 0; }
+    }
+
+    /* Nutrient Stations 3 Systems & Drag and Drop */
+    .station-container {
+      display: flex; flex-direction: column; gap: 14px; width: 440px; margin: 0 auto;
+    }
+    .station-card {
+      border: 2.5px dashed #0F766E; border-radius: 18px; padding: 14px 18px;
+      background: #E6F7F5; transition: all 0.3s ease;
+    }
+    .station-card.drag-over {
+      border-color: #059669; background: #A7F3D0; transform: scale(1.02);
+    }
+    .station-card.filled {
+      border-style: solid; border-color: #059669; background: #D1FAE5;
+      box-shadow: 0 6px 16px rgba(5, 150, 105, 0.2);
+    }
+    .station-title { font-family: 'Montserrat', sans-serif; font-size: 15px; font-weight: 800; color: #0C4E4B; display: flex; justify-content: space-between; align-items: center; }
+    .station-progress-bg { background: #CBD5E1; border-radius: 10px; height: 14px; width: 100%; margin-top: 8px; overflow: hidden; }
+    .station-progress-bar { background: linear-gradient(90deg, #0F766E, #059669); height: 100%; width: 0%; transition: width 0.4s ease; }
+    .food-tag-container { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+    .food-tag-station { background: #0F766E; color: #FFFFFF; font-weight: 800; font-size: 13px; padding: 4px 10px; border-radius: 8px; display: inline-block; }
+
+    /* Flash animations for correct & incorrect drops (No popups) */
+    @keyframes flashGreen {
+      0% { box-shadow: 0 0 0px rgba(5, 150, 105, 0); background-color: #D1FAE5; }
+      50% { box-shadow: 0 0 25px rgba(5, 150, 105, 0.9); background-color: #6EE7B7; }
+      100% { box-shadow: 0 0 0px rgba(5, 150, 105, 0); background-color: #E6F7F5; }
+    }
+    @keyframes flashRed {
+      0% { box-shadow: 0 0 0px rgba(220, 38, 38, 0); background-color: #FEE2E2; transform: translateX(0); }
+      20% { transform: translateX(-8px); box-shadow: 0 0 25px rgba(220, 38, 38, 0.9); background-color: #FCA5A5; }
+      40% { transform: translateX(8px); }
+      60% { transform: translateX(-6px); }
+      80% { transform: translateX(6px); }
+      100% { transform: translateX(0); box-shadow: 0 0 0px rgba(220, 38, 38, 0); background-color: #E6F7F5; }
+    }
+    @keyframes cardSnapBack {
+      0% { transform: scale(1.15) rotate(-5deg); border-color: #DC2626; background-color: #FEE2E2; }
+      50% { transform: scale(0.9) rotate(5deg); }
+      100% { transform: scale(1) rotate(0deg); border-color: #0F766E; background-color: #FFFFFF; }
+    }
+    .flash-green-anim { animation: flashGreen 0.6s ease; }
+    .flash-red-anim { animation: flashRed 0.6s ease; }
+    .card-snapback-anim { animation: cardSnapBack 0.5s ease; }
+
+    /* Food Selector Pantry - Individual Draggable Chips */
+    .food-pantry {
+      display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 10px; width: 100%; max-height: 380px; overflow-y: auto; padding: 6px;
+    }
+    .food-chip[draggable="true"] {
+      cursor: grab; user-select: none; transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+    }
+    .food-chip[draggable="true"]:active {
+      cursor: grabbing; opacity: 0.6;
+    }
+    .food-chip.disabled {
+      opacity: 0.35; pointer-events: none; filter: grayscale(0.8); border-style: dashed;
+    }
+    .food-chip {
+      background: #FFFFFF;
+      border: 2px solid #0F766E;
+      color: #0C4E4B; font-size: 17px; font-weight: 800;
+      padding: 12px 20px; border-radius: 24px; cursor: pointer;
+      transition: all 0.2s ease; display: flex; align-items: center; gap: 10px;
+      box-shadow: 0 4px 10px rgba(12, 78, 75, 0.1);
+    }
+    .food-chip:hover {
+      background: #0F766E; color: #FFFFFF; transform: scale(1.05);
+    }
+    .food-chip.added { opacity: 0.4; cursor: default; transform: none !important; }
+
+    /* Summary Mind Map Tree */
+    .mindmap-node {
+      background: #E6F7F5;
+      border: 2.5px solid #0F766E;
+      border-radius: 20px; padding: 28px;
+      min-height: 260px; width: 100%;
+    }
+    .mindmap-header { font-family: 'Montserrat', sans-serif; font-size: 22px; font-weight: 800; color: #0C4E4B; margin-bottom: 14px; }
+
+    /* Commitment Checklist */
+    .habit-item {
+      background: #FFFFFF;
+      border: 2px solid rgba(15, 118, 110, 0.35);
+      border-radius: 18px; padding: 20px 28px;
+      display: flex; align-items: center; gap: 20px;
+      font-size: 20px; font-weight: 600; cursor: pointer; transition: all 0.2s ease;
+      color: #1E293B; box-shadow: 0 4px 12px rgba(12, 78, 75, 0.06); width: 100%;
+    }
+    .habit-item:hover { background: #E6F7F5; border-color: #0F766E; transform: translateX(4px); }
+    .habit-item.checked { border-color: #059669; background: #D1FAE5; color: #065F46; font-weight: 700; }
+    .checkbox-icon {
+      width: 32px; height: 32px; border-radius: 10px;
+      border: 2.5px solid #0F766E;
+      display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 18px;
+    }
+    .habit-item.checked .checkbox-icon { background: #059669; border-color: #059669; color: white; }
+
+    /* Certificate Box */
+    .cert-card {
+      background: linear-gradient(135deg, #FFFFFF, #E6F7F5);
+      border: 5px double #0F766E;
+      border-radius: 28px; padding: 45px; text-align: center;
+      box-shadow: 0 15px 45px rgba(12, 78, 75, 0.18);
+      position: relative; overflow: hidden;
+      width: 100%; max-width: 920px;
+    }
+    .cert-title { font-family: 'Montserrat', sans-serif; font-size: 36px; font-weight: 900; color: #0C4E4B; margin-bottom: 18px; }
+
+    /* Drawer Menu */
+    .drawer-overlay {
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(12, 78, 75, 0.55); backdrop-filter: blur(6px);
+      z-index: 100; opacity: 0; pointer-events: none; transition: all 0.3s ease;
+    }
+    .drawer-overlay.open { opacity: 1; pointer-events: auto; }
+    .drawer {
+      position: fixed; top: 0; right: -420px; width: 420px; height: 100vh;
+      background: #F9FAFB; border-left: 3px solid #0F766E;
+      z-index: 101; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex; flex-direction: column; padding: 35px;
+      box-shadow: -10px 0 35px rgba(12, 78, 75, 0.18);
+    }
+    .drawer.open { right: 0; }
+    .drawer-title { font-family: 'Montserrat', sans-serif; font-size: 24px; font-weight: 800; color: #0C4E4B; margin-bottom: 24px; display: flex; justify-content: space-between; align-items: center; }
+    .drawer-list { flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; }
+    .drawer-item {
+      padding: 16px 20px; background: #FFFFFF; border: 1.5px solid rgba(15, 118, 110, 0.25); border-radius: 14px;
+      font-size: 16px; font-weight: 700; color: #1E293B; cursor: pointer; transition: all 0.2s ease;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .drawer-item:hover { background: #E6F7F5; border-color: #0F766E; color: #0C4E4B; }
+    .drawer-item.active { background: #0F766E; border-color: #0F766E; color: white; }
+
+    /* Custom Glassmorphic Modal */
+    .modal-overlay {
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(12, 78, 75, 0.6); backdrop-filter: blur(8px);
+      z-index: 200; display: none; align-items: center; justify-content: center;
+    }
+    .modal-overlay.open { display: flex; animation: fadeIn 0.3s ease; }
+    .modal-box {
+      background: #FFFFFF; border: 3.5px solid #0F766E;
+      border-radius: 28px; padding: 40px; width: 90%; max-width: 680px;
+      text-align: center; box-shadow: 0 25px 60px rgba(12, 78, 75, 0.3);
+    }
+    .modal-icon { font-size: 54px; margin-bottom: 14px; }
+    .modal-title { font-family: 'Montserrat', sans-serif; font-size: 26px; font-weight: 800; color: #0C4E4B; margin-bottom: 16px; }
+    .modal-msg { font-size: 18px; line-height: 1.7; color: #334155; margin-bottom: 28px; text-align: left; white-space: pre-line; }
+
+    /* Buttons */
+    .btn-action {
+      background: linear-gradient(135deg, #0F766E, #0C4E4B); color: #FFFFFF;
+      font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 18px;
+      padding: 16px 36px; border-radius: 35px; border: none; cursor: pointer;
+      transition: all 0.2s ease; box-shadow: 0 6px 20px rgba(15, 118, 110, 0.35);
+    }
+    .btn-action:hover { transform: scale(1.05); box-shadow: 0 8px 28px rgba(15, 118, 110, 0.55); }
+    .btn-stamp {
+      background: linear-gradient(135deg, #DC2626, #991B1B); color: white;
+      font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 18px;
+      padding: 15px 34px; border-radius: 35px; border: none; cursor: pointer;
+      box-shadow: 0 6px 20px rgba(220, 38, 38, 0.45); transition: all 0.2s ease;
+    }
+    .btn-stamp:hover { transform: scale(1.05); box-shadow: 0 8px 28px rgba(220, 38, 38, 0.65); }
+
+    /* Confetti Canvas */
+    #confettiCanvas { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 150; }
+  </style>
+</head>
+<body>
+
+<div class="bg-overlay"></div>
+
+<div id="app">
+  <!-- Header -->
+  <header>
+    <div class="header-left">
+      <button class="btn-header" onclick="goToSlide(0)">🏠 Trang chủ</button>
+      <div class="brand-badge">
+        <span class="icon">🩺</span>
+        <span class="text">NOVA HOSPITAL - KHOA DINH DƯỠNG</span>
+      </div>
+    </div>
+    <div class="header-right">
+      <div class="stage-badge" id="stageBadge">Khoa Dinh dưỡng - Nova Hospital</div>
+      <button class="btn-header" onclick="toggleDrawer()">📋 Danh sách slide</button>
+    </div>
+  </header>
+
+  <!-- Viewport -->
+  <main class="viewport">
+
+    <!-- SLIDE 1 [MĐ01]: MỞ ĐẦU BÀI HỌC -->
+    <section class="slide active" id="slide-0">
+      <div class="slide-body">
+        <div style="background: #E6F7F5; border: 2px solid #0F766E; color: #0F766E; font-weight: 800; padding: 10px 28px; border-radius: 30px; font-size: 16px;">
+          CHƯƠNG TRÌNH KỸ NĂNG SỐNG NOVASTARS - KHỐI 6
+        </div>
+        <h1 style="font-family: 'Montserrat', sans-serif; font-size: 56px; font-weight: 900; color: #0C4E4B; text-align: center; text-shadow: 0 4px 15px rgba(12,78,75,0.12);">
+          THỰC ĐƠN VÀNG CHO TUỔI DẬY THÌ
+        </h1>
+        <p style="font-size: 24px; color: #334155; max-width: 880px; text-align: center; line-height: 1.7; font-weight: 500;">
+          Bảo vệ vóc dáng, bứt phá chiều cao, phát triển trí não và cân bằng thể chất cùng Kíp trực Bác sĩ Dinh dưỡng Nova Hospital.
+        </p>
+        <button class="btn-action" style="font-size: 20px; padding: 20px 50px; margin-top: 10px;" onclick="nextSlide()">
+          🩺 BẮT ĐẦU PHIÊN KHÁM Y KHOA ➔
+        </button>
+      </div>
+    </section>
+
+    <!-- SLIDE 2 [MT01]: MỤC TIÊU BÀI HỌC (KIẾN THỨC - KỸ NĂNG - THÁI ĐỘ) -->
+    <section class="slide" id="slide-1">
+      <h2 class="slide-title"><span class="tag">MỤC TIÊU</span> MỤC TIÊU BÀI HỌC (KIẾN THỨC - KỸ NĂNG - THÁI ĐỘ)</h2>
+      <div class="slide-body">
+        <div class="grid-3" style="align-items: stretch;">
+          <div class="card" style="border-top: 5px solid #0F766E; min-height: 260px;">
+            <div class="card-title" style="color: #0F766E; font-size: 22px; border-bottom: 2px solid #E6F7F5; padding-bottom: 8px;">
+              🧠 1. KIẾN THỨC (K)
+            </div>
+            <div class="card-desc" style="font-size: 17px; text-align: left; line-height: 1.7; color: #334155;">
+              • Nhận biết được các nhóm chất dinh dưỡng cần thiết cho cơ thể trong giai đoạn tuổi dậy thì.<br><br>
+              • Hiểu rõ nhu cầu năng lượng và sự phát triển thể chất đặc thù của lứa tuổi THCS.
+            </div>
+          </div>
+
+          <div class="card" style="border-top: 5px solid #D97706; min-height: 260px;">
+            <div class="card-title" style="color: #D97706; font-size: 22px; border-bottom: 2px solid #FEF3C7; padding-bottom: 8px;">
+              🛠️ 2. KỸ NĂNG (S)
+            </div>
+            <div class="card-desc" style="font-size: 17px; text-align: left; line-height: 1.7; color: #334155;">
+              • Áp dụng kiến thức dinh dưỡng để tự thiết kế một thực đơn vàng cân bằng, hợp lý cho bản thân trong 1 ngày.
+            </div>
+          </div>
+
+          <div class="card" style="border-top: 5px solid #059669; min-height: 260px;">
+            <div class="card-title" style="color: #059669; font-size: 22px; border-bottom: 2px solid #D1FAE5; padding-bottom: 8px;">
+              ❤️ 3. THÁI ĐỘ (A)
+            </div>
+            <div class="card-desc" style="font-size: 17px; text-align: left; line-height: 1.7; color: #334155;">
+              • Có ý thức chủ động chăm sóc sức khỏe thể chất.<br><br>
+              • Tự giác lựa chọn thực phẩm lành mạnh và hạn chế đồ ăn nhanh.
+            </div>
+          </div>
+        </div>
+
+        <div style="background: #E6F7F5; border: 2px solid #0F766E; padding: 16px 30px; border-radius: 18px; text-align: center; width: 100%;">
+          <p style="font-size: 19px; font-weight: 800; color: #0C4E4B; margin: 0;">
+            🎯 Sẵn sàng chinh phục mục tiêu cùng Kíp trực Bác sĩ Dinh dưỡng Nova Hospital!
+          </p>
+        </div>
+        <div style="text-align: center;">
+          <button class="btn-action" style="font-size: 19px; padding: 16px 42px;" onclick="nextSlide()">[ BẮT ĐẦU NHIỆM VỤ Y KHOA ➔ ]</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 3 [GT01]: NHIỆM VỤ BÀI HỌC -->
+    <section class="slide" id="slide-2">
+      <h2 class="slide-title"><span class="tag">BÀI HỌC</span> NHIỆM VỤ CỦA KÍP TRỰC BÁC SĨ DINH DƯỠNG</h2>
+      <div class="slide-body">
+        <div class="grid-3">
+          <div class="card">
+            <div class="card-title">🚨 Nhiệm vụ 1</div>
+            <div class="card-desc">Tiếp nhận và giải mã 3 hồ sơ ca bệnh bất ổn thể chất (mệt mỏi, nổi mụn, sút cân, béo phì) của học sinh 12 tuổi.</div>
+          </div>
+          <div class="card">
+            <div class="card-title">🔍 Nhiệm vụ 2</div>
+            <div class="card-desc">Hội chẩn giải mã ma trận dinh dưỡng cho 5 hệ cơ quan (Thần kinh, Cơ xương, Nội tiết, Cảm xúc, Da).</div>
+          </div>
+          <div class="card">
+            <div class="card-title">🍱 Nhiệm vụ 3</div>
+            <div class="card-desc">Kê đơn Thực đơn vàng 1 ngày cân đối 4 nhóm chất và cam kết thói quen ăn uống chuẩn y khoa.</div>
+          </div>
+        </div>
+        <div style="background: #E6F7F5; border: 2px solid #0F766E; padding: 24px 30px; border-radius: 20px; text-align: center; width: 100%;">
+          <p style="font-size: 22px; font-weight: 800; color: #0C4E4B;">
+            👨‍⚕️ Các bác sĩ tập sự hãy sẵn sàng đeo thẻ kíp trực và bắt đầu Hoạt động 1!
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 4 [GT02]: HOẠT ĐỘNG 1: GIỚI THIỆU -->
+    <section class="slide" id="slide-3">
+      <h2 class="slide-title"><span class="tag">HOẠT ĐỘNG 1</span> TIẾP NHẬN CA BỆNH & BÁO ĐỘNG DINH DƯỠNG</h2>
+      <div class="slide-body">
+        <div style="font-size: 70px;">🚨</div>
+        <h3 style="font-family: 'Montserrat', sans-serif; font-size: 36px; font-weight: 900; color: #DC2626; text-align: center;">
+          🔴 BÁO ĐỘNG ĐỎ KHOA DINH DƯỠNG NOVA HOSPITAL
+        </h3>
+        <p style="font-size: 24px; max-width: 950px; color: #334155; text-align: center; line-height: 1.7;">
+          Khoa Dinh dưỡng vừa tiếp nhận 3 ca bệnh cấp cứu của các bạn học sinh 12 tuổi đang gặp tình trạng kiệt sức, da sần mụn nhờn và tăng cân thất thường.
+        </p>
+        <button class="btn-action" style="font-size: 20px; padding: 18px 45px;" onclick="nextSlide()">[ XEM HƯỚNG DẪN TÁC NGHIỆP ➔ ]</button>
+      </div>
+    </section>
+
+    <!-- SLIDE 5 [HD01]: HOẠT ĐỘNG 1: HƯỚNG DẪN 3 BƯỚC -->
+    <section class="slide" id="slide-4">
+      <h2 class="slide-title"><span class="tag">HƯỚNG DẪN HĐ1</span> QUY TRÌNH 3 BƯỚC PHÂN TÍCH HỒ SƠ CA BỆNH</h2>
+      <div class="slide-body">
+        <div class="grid-3">
+          <div class="card">
+            <div class="card-title">1️⃣ Đọc đề bài & tiếp nhận</div>
+            <div class="card-desc">Đọc kỹ 3 hồ sơ bệnh án của Nam, Linh và Hoàng được trình chiếu trên màn hình slide.</div>
+          </div>
+          <div class="card">
+            <div class="card-title">2️⃣ Thảo luận nhóm đôi</div>
+            <div class="card-desc">Các nhóm thảo luận kíp trực, ghi chú các từ khóa thói quen có hại vào Sổ ghi chép.</div>
+          </div>
+          <div class="card">
+            <div class="card-title">3️⃣ Trình bày & thao tác</div>
+            <div class="card-desc">Đại diện kíp trực lên bảng thao tác trực tiếp bấm chọn từ khóa thói quen xấu trên màn hình slide.</div>
+          </div>
+        </div>
+        <div style="text-align: center;">
+          <button class="btn-action" style="font-size: 19px; padding: 16px 42px;" onclick="nextSlide()">[ MỞ HỒ SƠ CA BỆNH & BẮT ĐẦU ⏱️ ]</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 6 [TH01]: HOẠT ĐỘNG 1: GAME VỚI NÚT TIMER -->
+    <section class="slide" id="slide-5">
+      <h2 class="slide-title">
+        <span class="tag">THỰC HÀNH HĐ1</span> TRÒ CHƠI GIẢI MÃ THÓI QUEN BỆNH ÁN
+        <span class="timer-box" style="margin-left: auto;">
+          ⏱️ <span id="timer1">03:00</span>
+          <button class="btn-timer-start" onclick="startTimer('timer1', 180)">▶ BẮT ĐẦU ĐẾM GIỜ</button>
+        </span>
+      </h2>
+      <div class="slide-body">
+        <p style="font-size: 19px; color: #0C4E4B; font-weight: 800; text-align: center;">
+          👉 Bấm vào các từ ngữ thể hiện THÓI QUEN SAI LẦM trong 3 hồ sơ ca bệnh dưới đây:
+        </p>
+        <div class="grid-3">
+          <!-- Hồ sơ 1: Nam -->
+          <div class="dossier-card">
+            <span class="patient-badge">CA BỆNH 1: NAM (12 TUỔI)</span>
+            <div class="dossier-text">
+              Nam 12 tuổi, dạo này da mặt nổi mụn nhờn. Cậu có thói quen 
+              <span class="kw-habit" id="kw-1" onclick="checkHabitKeyword('kw-1', true, 'nghiện trà sữa ngọt')">nghiện trà sữa ngọt</span> 
+              và hay 
+              <span class="kw-habit" id="kw-2" onclick="checkHabitKeyword('kw-2', true, 'thức khuya')">thức khuya</span> 
+              xem điện thoại. Giờ học Nam hay mệt mỏi, thiếu tập trung.
+            </div>
+          </div>
+
+          <!-- Hồ sơ 2: Linh -->
+          <div class="dossier-card">
+            <span class="patient-badge" style="background: #0F766E;">CA BỆNH 2: LINH (12 TUỔI)</span>
+            <div class="dossier-text">
+              Linh 12 tuổi, hay bị hoa mắt chóng mặt và chiều cao chậm phát triển so với các bạn. Linh có thói quen 
+              <span class="kw-habit" id="kw-3" onclick="checkHabitKeyword('kw-3', true, 'thường xuyên bỏ bữa sáng')">thường xuyên bỏ bữa sáng</span> 
+              và 
+              <span class="kw-habit" id="kw-4" onclick="checkHabitKeyword('kw-4', true, 'chỉ thích ăn đồ ăn nhanh chiên dầu')">chỉ thích ăn đồ ăn nhanh chiên dầu</span>.
+            </div>
+          </div>
+
+          <!-- Hồ sơ 3: Hoàng -->
+          <div class="dossier-card">
+            <span class="patient-badge" style="background: #D97706;">CA BỆNH 3: HOÀNG (12 TUỔI)</span>
+            <div class="dossier-text">
+              Hoàng 12 tuổi, hay mệt mỏi, uể uả, mồ hôi có mùi hôi và da hay bị khô ráp. Thói quen của Hoàng là 
+              <span class="kw-habit" id="kw-5" onclick="checkHabitKeyword('kw-5', true, 'rất lười uống nước lọc')">rất lười uống nước lọc</span>, 
+              mỗi ngày chỉ uống 1-2 ngụm nhỏ và thay bằng nước ngọt có ga.
+            </div>
+          </div>
+        </div>
+
+        <div style="text-align: center;">
+          <button class="btn-action" style="font-size: 19px; padding: 16px 42px;" onclick="nextSlide()">[ XEM ĐÁP ÁN & KẾT LUẬN SƯ PHẠM ➔ ]</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 7 [ĐA01]: HOẠT ĐỘNG 1: ĐÁP ÁN & KẾT LUẬN -->
+    <section class="slide" id="slide-6">
+      <h2 class="slide-title"><span class="tag">ĐÁP ÁN HĐ1</span> ĐÁP ÁN Y KHOA & KẾT LUẬN HOẠT ĐỘNG 1</h2>
+      <div class="slide-body">
+        <div class="grid-3" style="margin-bottom: 10px;">
+          <div class="card" style="border-color: #DC2626;">
+            <div class="card-title" style="color: #DC2626;">1. Bỏ bữa sáng</div>
+            <div class="card-desc">Thiếu đường trong máu (glucose) cho phục vụ não bộ ➔ Mệt mỏi, hoa mắt, giảm khả năng tiếp thu bài học.</div>
+          </div>
+          <div class="card" style="border-color: #D97706;">
+            <div class="card-title" style="color: #D97706;">2. Nghiện đồ ngọt</div>
+            <div class="card-desc">Gây rối loạn hormone nội tiết ➔ Tích tụ mỡ béo phì, da tiết mồ hôi và nổi mụn trứng cá.</div>
+          </div>
+          <div class="card" style="border-color: #0F766E;">
+            <div class="card-title" style="color: #0F766E;">3. Uống ít nước</div>
+            <div class="card-desc">Làm độc tố không thể đào thải ➔ Bề mặt da nhờn mụn, cơ thể uể uả thiếu sức sống.</div>
+          </div>
+        </div>
+        <div style="background: #FEF3C7; border: 2.5px solid #D97706; padding: 24px 30px; border-radius: 20px; width: 100%;">
+          <p style="font-size: 22px; font-weight: 800; color: #B45309; text-align: center;">
+            📌 KẾT LUẬN SƯ PHẠM: Tuổi dậy thì là giai đoạn bứt phá thể chất vàng. Cần từ chối ngay các thói quen ăn uống sai lầm!
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 8 [GT03]: HOẠT ĐỘNG 2: GIỚI THIỆU -->
+    <section class="slide" id="slide-7">
+      <h2 class="slide-title"><span class="tag">HOẠT ĐỘNG 2</span> GIẢI MÃ MA TRẬN DINH DƯỠNG TUỔI DẬY THÌ</h2>
+      <div class="slide-body">
+        <div style="font-size: 70px;">🔬</div>
+        <h3 style="font-family: 'Montserrat', sans-serif; font-size: 36px; font-weight: 900; color: #0C4E4B; text-align: center;">
+          PHIÊN HỘI CHẨN CỦA 5 BÁC SĨ CHUYÊN KHOA
+        </h3>
+        <p style="font-size: 24px; max-width: 900px; color: #334155; text-align: center; line-height: 1.7;">
+          Hãy khám phá mối liên hệ trực tiếp giữa 5 Hệ cơ quan tuổi dậy thì và các Dưỡng chất thiết yếu!
+        </p>
+        <button class="btn-action" style="font-size: 20px; padding: 18px 45px;" onclick="nextSlide()">[ XEM HƯỚNG DẪN HỘI CHẨN ➔ ]</button>
+      </div>
+    </section>
+
+    <!-- SLIDE 9 [HD02]: HOẠT ĐỘNG 2: HƯỚNG DẪN 3 BƯỚC + NÚT XEM YÊU CẦU CHUYÊN KHOA -->
+    <section class="slide" id="slide-8">
+      <h2 class="slide-title"><span class="tag">HƯỚNG DẪN HĐ2</span> QUY TRÌNH 3 BƯỚC HỘI CHẨN Y KHOA</h2>
+      <div class="slide-body">
+        <div class="grid-3">
+          <div class="card">
+            <div class="card-title">1️⃣ Phân công chuyên khoa</div>
+            <div class="card-desc">Lắng nghe nhiệm vụ phân công chẩn đoán theo từng chuyên khoa (Thần kinh, Cơ xương, Nội tiết, Cảm xúc, Da).</div>
+          </div>
+          <div class="card">
+            <div class="card-title">2️⃣ Thảo luận kíp trực</div>
+            <div class="card-desc">Đối chiếu nhu cầu sinh lý từng hệ cơ quan và ghi chú giải pháp dưỡng chất vào Sổ ghi chép.</div>
+          </div>
+          <div class="card">
+            <div class="card-title">3️⃣ Báo cáo & Ghép nối</div>
+            <div class="card-desc">Đại diện kíp trực lên bảng chọn ghép nối từng hệ cơ quan ở Cột 1 với Nhóm dưỡng chất tương ứng ở Cột 2.</div>
+          </div>
+        </div>
+        <div style="display: flex; gap: 20px; justify-content: center; align-items: center; width: 100%;">
+          <button class="btn-action" style="font-size: 18px; padding: 15px 35px; background: #059669;" onclick="showSpecialtyRequirements()">
+            💡 XEM YÊU CẦU CỦA CÁC BÁC SĨ CHUYÊN KHOA
+          </button>
+          <button class="btn-action" style="font-size: 18px; padding: 15px 35px;" onclick="nextSlide()">
+            [ BẮT ĐẦU GAME HỘI CHẨN MA TRẬN ⏱️ ]
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 10 [TH02]: HOẠT ĐỘNG 2: GAME NỐI CÓ NÚT TIMER & CANVAS SVG DRAWING -->
+    <section class="slide" id="slide-9">
+      <h2 class="slide-title">
+        <span class="tag">THỰC HÀNH HĐ2</span> TRÒ CHƠI CHẠM NỐI MA TRẬN 5 HỆ CƠ QUAN
+        <span class="timer-box" style="margin-left: auto;">
+          ⏱️ <span id="timer2">04:00</span>
+          <button class="btn-timer-start" onclick="startTimer('timer2', 240)">▶ BẮT ĐẦU ĐẾM GIỜ</button>
+        </span>
+      </h2>
+      <div class="slide-body">
+        <p style="font-size: 19px; color: #0C4E4B; font-weight: 800; text-align: center;">
+          👉 Bấm chọn 1 Hệ cơ quan ở Cột Trái, sau đó chọn Dưỡng chất đúng ở Cột Phải:
+        </p>
+        <div class="matrix-container" id="matrixContainer">
+          <svg id="matrixSvg" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 5;"></svg>
+          <div class="matrix-col">
+            <div class="matrix-item" id="left-1" onclick="selectLeft(1)">1. Hệ thần kinh (Não phát triển)</div>
+            <div class="matrix-item" id="left-2" onclick="selectLeft(2)">2. Hệ cơ & xương (Tăng chiều cao)</div>
+            <div class="matrix-item" id="left-3" onclick="selectLeft(3)">3. Hệ nội tiết & mồ hôi</div>
+            <div class="matrix-item" id="left-4" onclick="selectLeft(4)">4. Cảm xúc tuổi dậy thì</div>
+            <div class="matrix-item" id="left-5" onclick="selectLeft(5)">5. Hệ da (Nhờn & nổi mụn)</div>
+          </div>
+          <div class="matrix-col">
+            <div class="matrix-item" id="right-A" onclick="selectRight('A')">A. Đạm Protein, Canxi, Vitamin D, Kẽm</div>
+            <div class="matrix-item" id="right-B" onclick="selectRight('B')">B. Chất béo tốt Omega-3 & Vitamin B</div>
+            <div class="matrix-item" id="right-C" onclick="selectRight('C')">C. Hạn chế đường, bổ sung Sắt & Nước lọc</div>
+            <div class="matrix-item" id="right-D" onclick="selectRight('D')">D. Uống đủ 8-10 cốc nước/ngày làm sạch da</div>
+            <div class="matrix-item" id="right-E" onclick="selectRight('E')">E. Ăn đa dạng nhóm chất + Ngủ đủ giấc</div>
+          </div>
+        </div>
+        <div style="text-align: center; margin-top: 15px;">
+          <button class="btn-action" style="font-size: 18px; padding: 12px 35px;" onclick="nextSlide()">[ XEM ĐÁP ÁN & KẾT LUẬN HỘI CHẨN ➔ ]</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 11 [ĐA02]: HOẠT ĐỘNG 2: ĐÁP ÁN & CHỐT BÀI -->
+    <section class="slide" id="slide-10">
+      <h2 class="slide-title"><span class="tag">TỔNG KẾT HĐ2</span> TỔNG KẾT KIẾN THỨC CỐT LÕI</h2>
+      <div class="slide-body">
+        <div class="grid-2">
+          <div class="card" style="min-height: 250px;">
+            <div class="card-title">📌 3 YẾU TỐ CHẾ ĐỘ DINH DƯỠNG</div>
+            <div class="card-desc" style="font-size: 18px;">
+              • <strong>Nhóm chất:</strong> Ăn đa dạng các loại thực phẩm trong các nhóm chất.<br>
+              • <strong>Lượng thức ăn:</strong> Cân đối giữa các nhóm thực phẩm trên Đĩa ăn.<br>
+              • <strong>Thời điểm ăn:</strong> Ăn đúng giờ, đủ 3 bữa chính, 1-2 bữa phụ.
+            </div>
+          </div>
+          <div class="card" style="min-height: 250px;">
+            <div class="card-title">📌 3 NGUYÊN TẮC DINH DƯỠNG TUỔI DẬY THÌ</div>
+            <div class="card-desc" style="font-size: 18px;">
+              • <strong>Đa dạng & Cân đối:</strong> Cung cấp đủ đạm, canxi, chất béo tốt.<br>
+              • <strong>Bổ sung Đạm, Canxi & Nước:</strong> Uống đủ 8 - 10 cốc nước/ngày.<br>
+              • <strong>Hạn chế đồ ngọt:</strong> Giảm trà sữa, nước có ga & bánh kẹo.
+            </div>
+          </div>
+        </div>
+        <div style="text-align: center;">
+          <button class="btn-action" style="font-size: 19px; padding: 16px 42px;" onclick="nextSlide()">[ SANG GIAI ĐOẠN 5: KÊ ĐƠN PHÁC ĐỒ ➔ ]</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 12 [GT04]: HOẠT ĐỘNG 3: GIỚI THIỆU -->
+    <section class="slide" id="slide-11">
+      <h2 class="slide-title"><span class="tag">HOẠT ĐỘNG 3</span> KÊ ĐƠN PHÁC ĐỒ & KÍCH HOẠT TRẠM DƯỠNG CHẤT</h2>
+      <div class="slide-body">
+        <div style="font-size: 70px;">⚡🏥</div>
+        <h3 style="font-family: 'Montserrat', sans-serif; font-size: 32px; font-weight: 900; color: #0C4E4B; text-align: center;">
+          KÍCH HOẠT TRẠM DƯỠNG CHẤT 3 HỆ CƠ QUAN: NÃO BỘ, XƯƠNG KHỚP, DA & NỘI TIẾT
+        </h3>
+        <p style="font-size: 22px; max-width: 900px; color: #334155; text-align: center; line-height: 1.7;">
+          Các kíp trực Bác sĩ hãy chọn lựa vi chất & thực phẩm lành mạnh để nạp đầy 100% Thanh năng lượng cho 3 hệ cơ quan quan trọng nhất tuổi dậy thì!
+        </p>
+        <button class="btn-action" style="font-size: 20px; padding: 18px 45px;" onclick="nextSlide()">[ XEM QUY TRÌNH KÍCH HOẠT TRẠM DƯỠNG CHẤT ➔ ]</button>
+      </div>
+    </section>
+
+    <!-- SLIDE 13 [HD03]: HOẠT ĐỘNG 3: HƯỚNG DẪN 3 BƯỚC -->
+    <section class="slide" id="slide-12">
+      <h2 class="slide-title"><span class="tag">HƯỚNG DẪN HĐ3</span> QUY TRÌNH 3 BƯỚC KÍCH HOẠT TRẠM DƯỠNG CHẤT</h2>
+      <div class="slide-body">
+        <div class="grid-3" style="margin-bottom: 10px;">
+          <div class="card" style="min-height: 180px; padding: 20px;">
+            <div class="card-title" style="font-size: 20px;">1️⃣ Nghiên cứu nhu cầu dưỡng chất</div>
+            <div class="card-desc" style="font-size: 17px;">Quan sát nhu cầu vi chất của 3 hệ: Thần kinh (Omega-3/Vit B); Cơ xương (Canxi/D3/Protein); Da & Nội tiết (Nước 8-10 cốc/Vit C).</div>
+          </div>
+          <div class="card" style="min-height: 180px; padding: 20px;">
+            <div class="card-title" style="font-size: 20px;">2️⃣ Kê đơn trên Phiếu A4</div>
+            <div class="card-desc" style="font-size: 17px;">Kíp trực thảo luận, phân loại thực phẩm, điền/dán hoàn thiện 3 Trạm Dưỡng chất trên Phiếu in A4.</div>
+          </div>
+          <div class="card" style="min-height: 180px; padding: 20px;">
+            <div class="card-title" style="font-size: 20px;">3️⃣ Kích hoạt năng lượng trên slide</div>
+            <div class="card-desc" style="font-size: 17px;">Đại diện kíp trực lên bảng chọn dán thực phẩm trực tiếp trên slide tương tác để nạp đầy 100% Thanh năng lượng.</div>
+          </div>
+        </div>
+
+        <!-- ILLUSTRATION BANNER FOR 3 NUTRIENT STATIONS -->
+        <div style="background: #E6F7F5; border: 2.5px solid #0F766E; border-radius: 20px; padding: 20px 30px; width: 100%; display: flex; align-items: center; justify-content: space-around;">
+          <div style="font-weight: 800; color: #0C4E4B; font-size: 18px;">MÔ HÌNH 3 TRẠM DƯỠNG CHẤT:</div>
+          <div style="display: flex; gap: 16px;">
+            <span style="background: #FEF3C7; border: 2px solid #D97706; color: #B45309; padding: 8px 16px; border-radius: 12px; font-weight: 800;">🧠 TRẠM DƯỠNG THẦN KINH</span>
+            <span style="background: #FEE2E2; border: 2px solid #DC2626; color: #DC2626; padding: 8px 16px; border-radius: 12px; font-weight: 800;">🦴 TRẠM DƯỠNG CƠ XƯƠNG</span>
+            <span style="background: #D1FAE5; border: 2px solid #059669; color: #065F46; padding: 8px 16px; border-radius: 12px; font-weight: 800;">✨ TRẠM DƯỠNG DA & NỘI TIẾT</span>
+          </div>
+        </div>
+
+        <div style="text-align: center;">
+          <button class="btn-action" style="font-size: 19px; padding: 16px 42px;" onclick="nextSlide()">[ BẮT ĐẦU GAME KÍCH HOẠT TRẠM DƯỠNG CHẤT ⏱️ ]</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 14 [TH03]: HOẠT ĐỘNG 3: GAME TRẠM DƯỠNG CHẤT (DRAG & DROP + TÁCH THẺ + XÁO TRỘN + TĂNG DẦN 100%) -->
+    <section class="slide" id="slide-13">
+      <h2 class="slide-title">
+        <span class="tag">THỰC HÀNH HĐ3</span> TRÒ CHƠI KÍCH HOẠT TRẠM DƯỠNG CHẤT 3 HỆ CƠ QUAN
+        <span class="timer-box" style="margin-left: auto;">
+          ⏱️ <span id="timer3">05:00</span>
+          <button class="btn-timer-start" onclick="startTimer('timer3', 300)">▶ BẮT ĐẦU ĐẾM GIỜ</button>
+        </span>
+      </h2>
+      <div class="slide-body">
+        <div style="display: flex; gap: 25px; align-items: flex-start; width: 100%;">
+          <!-- LEFT: 3 DROPZONE NUTRIENT STATIONS -->
+          <div class="station-container">
+            <div class="station-card" id="st-than-kinh" ondragover="allowDrop(event)" ondragleave="leaveDrop(event)" ondrop="dropNutrient(event, 'than-kinh')">
+              <div class="station-title">
+                <span>🧠 TRẠM DƯỠNG THẦN KINH (NÃO BỘ)</span>
+                <span style="font-size: 14px; color: #0F766E;" id="percent-than-kinh">0%</span>
+              </div>
+              <div class="station-progress-bg">
+                <div class="station-progress-bar" id="bar-than-kinh"></div>
+              </div>
+              <div class="food-tag-container" id="tag-than-kinh"></div>
+            </div>
+
+            <div class="station-card" id="st-co-xuong" ondragover="allowDrop(event)" ondragleave="leaveDrop(event)" ondrop="dropNutrient(event, 'co-xuong')">
+              <div class="station-title">
+                <span>🦴 TRẠM DƯỠNG CƠ XƯƠNG (XƯƠNG KHỚP)</span>
+                <span style="font-size: 14px; color: #0F766E;" id="percent-co-xuong">0%</span>
+              </div>
+              <div class="station-progress-bg">
+                <div class="station-progress-bar" id="bar-co-xuong"></div>
+              </div>
+              <div class="food-tag-container" id="tag-co-xuong"></div>
+            </div>
+
+            <div class="station-card" id="st-da-noi-tiet" ondragover="allowDrop(event)" ondragleave="leaveDrop(event)" ondrop="dropNutrient(event, 'da-noi-tiet')">
+              <div class="station-title">
+                <span>✨ TRẠM DƯỠNG DA & NỘI TIẾT (LÀN DA & HORMONE)</span>
+                <span style="font-size: 14px; color: #0F766E;" id="percent-da-noi-tiet">0%</span>
+              </div>
+              <div class="station-progress-bg">
+                <div class="station-progress-bar" id="bar-da-noi-tiet"></div>
+              </div>
+              <div class="food-tag-container" id="tag-da-noi-tiet"></div>
+            </div>
+          </div>
+
+          <!-- RIGHT: 16 INDIVIDUAL SHUFFLED DRAGGABLE CARDS -->
+          <div style="flex: 1;">
+            <p style="font-size: 17px; color: #0C4E4B; font-weight: 800; margin-bottom: 10px;">
+              👉 Kéo & thả (hoặc click chọn) các thẻ vi chất độc lập vào đúng 3 Trạm Dưỡng chất để tăng dần năng lượng:
+            </p>
+            <div class="food-pantry" id="food-pantry-container">
+              <div class="food-chip" draggable="true" id="c1" data-target="than-kinh" data-name="🐟 Cá hồi" ondragstart="dragStart(event)" onclick="clickNutrientCard(this)">🐟 Cá hồi</div>
+              <div class="food-chip" draggable="true" id="c2" data-target="co-xuong" data-name="🥛 Sữa tươi" ondragstart="dragStart(event)" onclick="clickNutrientCard(this)">🥛 Sữa tươi</div>
+              <div class="food-chip" draggable="true" id="c3" data-target="da-noi-tiet" data-name="🚰 Nước lọc" ondragstart="dragStart(event)" onclick="clickNutrientCard(this)">🚰 Nước lọc</div>
+              <div class="food-chip" draggable="true" id="c4" data-target="bad" data-name="🥤 Trà sữa trân châu" ondragstart="dragStart(event)" onclick="clickNutrientCard(this)">🥤 Trà sữa trân châu</div>
+              <div class="food-chip" draggable="true" id="c5" data-target="than-kinh" data-name="🌰 Hạt óc chó" ondragstart="dragStart(event)" onclick="clickNutrientCard(this)">🌰 Hạt óc chó</div>
+              <div class="food-chip" draggable="true" id="c6" data-target="co-xuong" data-name="🦐 Tôm biển" ondragstart="dragStart(event)" onclick="clickNutrientCard(this)">🦐 Tôm biển</div>
+              <div class="food-chip" draggable="true" id="c7" data-target="da-noi-tiet" data-name="🍊 Quả cam" ondragstart="dragStart(event)" onclick="clickNutrientCard(this)">🍊 Quả cam</div>
+              <div class="food-chip" draggable="true" id="c8" data-target="bad" data-name="🍗 Gà rán chiên dầu" ondragstart="dragStart(event)" onclick="clickNutrientCard(this)">🍗 Gà rán chiên dầu</div>
+              <div class="food-chip" draggable="true" id="c9" data-target="than-kinh" data-name="🥚 Trứng gà" ondragstart="dragStart(event)" onclick="clickNutrientCard(this)">🥚 Trứng gà</div>
+              <div class="food-chip" draggable="true" id="c10" data-target="co-xuong" data-name="🥦 Bông cải" ondragstart="dragStart(event)" onclick="clickNutrientCard(this)">🥦 Bông cải</div>
+              <div class="food-chip" draggable="true" id="c11" data-target="da-noi-tiet" data-name="🍧 Sữa chua" ondragstart="dragStart(event)" onclick="clickNutrientCard(this)">🍧 Sữa chua</div>
+              <div class="food-chip" draggable="true" id="c12" data-target="bad" data-name="🍬 Kẹo ngọt" ondragstart="dragStart(event)" onclick="clickNutrientCard(this)">🍬 Kẹo ngọt</div>
+              <div class="food-chip" draggable="true" id="c13" data-target="than-kinh" data-name="🌾 Ngũ cốc" ondragstart="dragStart(event)" onclick="clickNutrientCard(this)">🌾 Ngũ cốc</div>
+              <div class="food-chip" draggable="true" id="c14" data-target="co-xuong" data-name="🥩 Thịt nạc" ondragstart="dragStart(event)" onclick="clickNutrientCard(this)">🥩 Thịt nạc</div>
+              <div class="food-chip" draggable="true" id="c15" data-target="da-noi-tiet" data-name="🥑 Quả bơ" ondragstart="dragStart(event)" onclick="clickNutrientCard(this)">🥑 Quả bơ</div>
+              <div class="food-chip" draggable="true" id="c16" data-target="bad" data-name="🍟 Khoai tây chiên" ondragstart="dragStart(event)" onclick="clickNutrientCard(this)">🍟 Khoai tây chiên</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 15 [ĐA03]: HOẠT ĐỘNG 3: ĐÁP ÁN & ĐÓNG DẤU -->
+    <section class="slide" id="slide-14">
+      <h2 class="slide-title"><span class="tag">ĐÁP ÁN HĐ3</span> PHÁC ĐỒ BỔ SUNG DƯỠNG CHẤT 3 HỆ CƠ QUAN</h2>
+      <div class="slide-body">
+        <div class="grid-3">
+          <div class="card" style="min-height: 230px;">
+            <div class="card-title" style="color: #D97706;">🧠 PHÁC ĐỒ THẦN KINH (NÃO BỘ)</div>
+            <div class="card-desc">• Cá hồi, Hạt óc chó, Trứng gà, Ngũ cốc nguyên hạt.<br>• Vi chất: Omega-3, Choline & Vitamin B.<br>• Tác dụng: Tăng độ tập trung, ghi nhớ bài học tốt.</div>
+          </div>
+          <div class="card" style="min-height: 230px;">
+            <div class="card-title" style="color: #DC2626;">🦴 PHÁC ĐỒ CƠ XƯƠNG (XƯƠNG KHỚP)</div>
+            <div class="card-desc">• Sữa tươi, Tôm, Bông cải xanh, Thịt nạc.<br>• Vi chất: Canxi, Vitamin D3 & Protein.<br>• Tác dụng: Thúc đẩy chiều cao bứt phá, xương vững chắc.</div>
+          </div>
+          <div class="card" style="min-height: 230px;">
+            <div class="card-title" style="color: #059669;">✨ PHÁC ĐỒ DA & NỘI TIẾT</div>
+            <div class="card-desc">• Nước lọc 8-10 cốc/ngày, Quả cam/Ổi, Sữa chua.<br>• Vi chất: Nước lọc sạch độc tố, Vitamin C & E.<br>• Tác dụng: Cân bằng hormone, da sạch mụn.</div>
+          </div>
+        </div>
+        <div style="text-align: center; margin-top: 15px;">
+          <button class="btn-stamp" style="font-size: 19px; padding: 16px 36px;" onclick="playStampSound(); showModal('ĐÃ THẨM ĐỊNH Y KHOA! 🏆', 'Phác đồ bổ sung dưỡng chất cho 3 hệ cơ quan đã được phê duyệt đạt 100% chuẩn Y khoa tuổi dậy thì!')">
+            💮 ĐÓNG DẤU THẨM ĐỊNH Y KHOA
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 16 [TK01]: SƠ ĐỒ TƯ DUY TỔNG KẾT -->
+    <section class="slide" id="slide-15">
+      <h2 class="slide-title"><span class="tag">TỔNG KẾT</span> SƠ ĐỒ TƯ DUY TỔNG KẾT BÀI HỌC H6.01</h2>
+      <div class="slide-body">
+        <div class="grid-3">
+          <div class="mindmap-node">
+            <div class="mindmap-header">3 Yếu tố Chế độ</div>
+            <p class="card-desc">• Nhóm chất (Chất đạm, Chất đường bột, Chất béo, Vitamin & Khoáng chất)<br>• Lượng thức ăn (Cân đối tỉ lệ)<br>• Thời điểm (Đúng giờ, 3 bữa chính)</p>
+          </div>
+          <div class="mindmap-node">
+            <div class="mindmap-header">5 Hệ cơ quan</div>
+            <p class="card-desc">• Thần kinh (Omega-3/B)<br>• Cơ xương (Canxi/D3/Protein)<br>• Nội tiết & da (Nước 8-10 cốc/Vit C)<br>• Cảm xúc (Ăn đa dạng)</p>
+          </div>
+          <div class="mindmap-node">
+            <div class="mindmap-header">3 Nguyên tắc Vàng</div>
+            <p class="card-desc">• Đa dạng & Cân đối<br>• Bổ sung Đạm, Canxi, Nước lọc<br>• Hạn chế trà sữa, đồ ngọt & ăn đúng 3 bữa chính</p>
+          </div>
+        </div>
+        <div style="text-align: center;">
+          <button class="btn-action" style="font-size: 19px; padding: 16px 42px;" onclick="nextSlide()">[ KÝ CAM KẾT Y ĐỨC DINH DƯỠNG ➔ ]</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 17 [CK01]: BẢNG CAM KẾT DINH DƯỠNG CÁ NHÂN A4 -->
+    <section class="slide" id="slide-16">
+      <h2 class="slide-title"><span class="tag">CAM KẾT</span> BẢNG CAM KẾT DINH DƯỠNG CÁ NHÂN</h2>
+      <div class="slide-body">
+        <p style="font-size: 20px; color: #0C4E4B; font-weight: 800; text-align: center;">👉 Bấm chọn các thói quen bạn cam kết tự viết vào Giấy A4 của mình:</p>
+        <div style="display: flex; flex-direction: column; gap: 16px; width: 100%;">
+          <div class="habit-item" onclick="toggleHabit(this)">
+            <div class="checkbox-icon">✓</div>
+            <div>Tôi cam kết ăn đầy đủ 3 bữa chính, không bao giờ bỏ bữa sáng.</div>
+          </div>
+          <div class="habit-item" onclick="toggleHabit(this)">
+            <div class="checkbox-icon">✓</div>
+            <div>Tôi cam kết uống đủ 8 - 10 cốc nước lọc mỗi ngày để sáng da và đào thải độc tố.</div>
+          </div>
+          <div class="habit-item" onclick="toggleHabit(this)">
+            <div class="checkbox-icon">✓</div>
+            <div>Tôi cam kết hạn chế trà sữa, đồ ngọt, nước có ga và thực phẩm chiên rán.</div>
+          </div>
+          <div class="habit-item" onclick="toggleHabit(this)">
+            <div class="checkbox-icon">✓</div>
+            <div>Tôi cam kết tăng cường các thực phẩm giàu Đạm (thịt, cá, trứng) và Canxi (sữa).</div>
+          </div>
+        </div>
+        <div style="text-align: center;">
+          <button class="btn-action" style="font-size: 19px; padding: 16px 42px;" onclick="nextSlide()">[ XEM BẰNG VINH DANH BÁC SĨ NỘI TRÚ 🏆 ]</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 18 [CK02]: VINH DANH & TRAO BẰNG BÁC SĨ NỘI TRÚ -->
+    <section class="slide" id="slide-17">
+      <h2 class="slide-title"><span class="tag">VINH DANH</span> BẰNG VINH DANH BÁC SĨ DINH DƯỠNG NỘI TRÚ</h2>
+      <div class="slide-body">
+        <div class="cert-card">
+          <div style="font-size: 60px; margin-bottom: 10px;">🎖️</div>
+          <h2 class="cert-title">BẰNG VINH DANH BÁC SĨ DINH DƯỠNG NỘI TRÚ</h2>
+          <p style="font-size: 24px; color: #334155; margin: 18px 0; font-weight: 500;">
+            Trao tặng Kíp trực Bác sĩ tập sự Lớp 6 đã xuất sắc hoàn thành đào tạo:
+          </p>
+          <h3 style="font-family: 'Montserrat', sans-serif; font-size: 36px; font-weight: 900; color: #0C4E4B; margin-bottom: 24px;">
+            THỰC ĐƠN VÀNG CHO TUỔI DẬY THÌ
+          </h3>
+          <p style="font-size: 20px; color: #475569; font-weight: 700;">Khoa Dinh dưỡng - Bệnh viện Nova Hospital 2026</p>
+        </div>
+        <button class="btn-action" style="font-size: 20px; padding: 18px 45px;" onclick="triggerConfetti(); playFanfareSound();">
+          🎉 BẮN PHÁO HOA CHÚC MỪNG
+        </button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <button class="btn-nav" id="btnPrev" onclick="prevSlide()">◀ TRƯỚC</button>
+    <div class="slide-counter" id="slideCounter">Slide 1 / 18</div>
+    <span class="key-hint">💡 Phím ← và → trên bàn phím để chuyển slide</span>
+    <button class="btn-nav" id="btnNext" onclick="nextSlide()">SAU ▶</button>
+  </footer>
+</div>
+
+<!-- Drawer Menu -->
+<div class="drawer-overlay" id="drawerOverlay" onclick="toggleDrawer()"></div>
+<div class="drawer" id="drawer">
+  <div class="drawer-title">
+    <span>DANH SÁCH SLIDE</span>
+    <button style="background: none; border: none; color: #DC2626; font-size: 24px; cursor: pointer;" onclick="toggleDrawer()">✕</button>
+  </div>
+  <div class="drawer-list" id="drawerList"></div>
+</div>
+
+<!-- Custom Glassmorphic Modal -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal-box">
+    <div class="modal-icon" id="modalIcon">🩺</div>
+    <div class="modal-title" id="modalTitle">THÔNG BÁO Y KHOA</div>
+    <div class="modal-msg" id="modalMsg">Nội dung thông báo</div>
+    <button class="btn-action" onclick="closeModal()">ĐÓNG</button>
+  </div>
+</div>
+
+<!-- Confetti Canvas -->
+<canvas id="confettiCanvas"></canvas>
+
+<script>
+  let currentSlide = 0;
+  const totalSlides = 18;
+  let timerIntervals = {};
+  let foundHabitsCount = 0;
+
+  const stages = [
+    "Khoa Dinh dưỡng - Nova Hospital",
+    "Mục tiêu bài học (K-S-A)",
+    "Nhiệm vụ bài học",
+    "Giai đoạn 1: Mở khóa ca bệnh",
+    "Giai đoạn 2: Nhận ca bệnh",
+    "Giai đoạn 3: Khám bệnh",
+    "Giai đoạn 3: Chẩn đoán & Chốt bài",
+    "Hội chẩn 5 Bác sĩ chuyên khoa",
+    "Quy trình 3 bước hội chẩn",
+    "Giai đoạn 4: Hội chẩn y khoa",
+    "Giai đoạn 4: Chốt kiến thức cốt lõi",
+    "Kê đơn phác đồ",
+    "Mô hình 3 Trạm Dưỡng chất",
+    "Giai đoạn 5: Kê đơn phác đồ",
+    "Giai đoạn 5: Thực đơn mẫu thẩm định",
+    "Sơ đồ tư duy 3 nhánh",
+    "Học sinh tự viết A4",
+    "Giai đoạn 6: Kế hoạch chăm sóc & Vinh danh"
+  ];
+
+  const slideTitles = [
+    "1. Mở đầu bài học",
+    "2. Mục tiêu bài học (K-S-A)",
+    "3. Nhiệm vụ bài học",
+    "4. Hoạt động 1: Tiếp nhận ca bệnh & Báo động dinh dưỡng",
+    "5. Hoạt động 1: Hướng dẫn phân tích ca bệnh",
+    "6. Hoạt động 1: Trò chơi Giải mã Thói quen Bệnh án",
+    "7. Hoạt động 1: Đáp án & Chốt bài HĐ1",
+    "8. Hoạt động 2: Giới thiệu Hoạt động 2",
+    "9. Hoạt động 2: Hướng dẫn ghép nối Dưỡng chất",
+    "10. Hoạt động 2: Trò chơi Chạm nối Ma trận 5 hệ cơ quan",
+    "11. Hoạt động 2: Đáp án & Chốt kiến thức cốt lõi",
+    "12. Hoạt động 3: Giới thiệu Hoạt động 3",
+    "13. Hoạt động 3: Hướng dẫn Quy trình 3 bước Trạm Dưỡng chất",
+    "14. Hoạt động 3: Trò chơi Kích hoạt Trạm Dưỡng chất 3 Hệ cơ quan",
+    "15. Hoạt động 3: Đáp án Phác đồ Bổ sung Dưỡng chất 3 Hệ cơ quan",
+    "16. Sơ đồ tư duy Tổng kết bài học",
+    "17. Bảng cam kết dinh dưỡng cá nhân",
+    "18. Vinh danh & Trao Bằng Bác sĩ Nội trú"
+  ];
+
+  // Audio Synth Engine
+  let audioCtx = null;
+  function initAudio() { if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)(); }
+
+  function playBeep() {
+    try {
+      initAudio();
+      const osc = audioCtx.createOscillator(), gain = audioCtx.createGain();
+      osc.type = 'sine'; osc.frequency.setValueAtTime(600, audioCtx.currentTime);
+      gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.1);
+      osc.connect(gain); gain.connect(audioCtx.destination);
+      osc.start(); osc.stop(audioCtx.currentTime + 0.1);
+    } catch(e) {}
+  }
+
+  function playStampSound() {
+    try {
+      initAudio();
+      const osc = audioCtx.createOscillator(), gain = audioCtx.createGain();
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(160, audioCtx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(30, audioCtx.currentTime + 0.15);
+      gain.gain.setValueAtTime(0.4, audioCtx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.15);
+      osc.connect(gain); gain.connect(audioCtx.destination);
+      osc.start(); osc.stop(audioCtx.currentTime + 0.15);
+    } catch(e) {}
+  }
+
+  function playFanfareSound() {
+    try {
+      initAudio();
+      const notes = [523.25, 659.25, 783.99, 1046.50];
+      notes.forEach((freq, i) => {
+        const osc = audioCtx.createOscillator(), gain = audioCtx.createGain();
+        osc.type = 'triangle'; osc.frequency.setValueAtTime(freq, audioCtx.currentTime + i * 0.12);
+        gain.gain.setValueAtTime(0.2, audioCtx.currentTime + i * 0.12);
+        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + i * 0.12 + 0.3);
+        osc.connect(gain); gain.connect(audioCtx.destination);
+        osc.start(audioCtx.currentTime + i * 0.12);
+        osc.stop(audioCtx.currentTime + i * 0.12 + 0.3);
+      });
+    } catch(e) {}
+  }
+
+  function showModal(title, msg, icon = '🩺') {
+    document.getElementById('modalTitle').innerText = title;
+    document.getElementById('modalMsg').innerText = msg;
+    document.getElementById('modalIcon').innerText = icon;
+    document.getElementById('modalOverlay').classList.add('open');
+  }
+  function closeModal() { document.getElementById('modalOverlay').classList.remove('open'); }
+
+  function showSpecialtyRequirements() {
+    playBeep();
+    const reqText = `🧠 Bác sĩ Thần kinh: Tìm dưỡng chất bổ sung cho Não phát triển: Chất béo tốt Omega-3 & Vitamin B.
+
+🦴 Bác sĩ Cơ - Xương: Tìm dưỡng chất bứt phá Chiều cao & Cân nặng: Đạm/Protein, Canxi, Vitamin D, Kẽm.
+
+💧 Bác sĩ Da & Nội tiết: Tìm dưỡng chất cân bằng Hormone & Sáng da: Sắt, Protein, Nước 8-10 cốc/ngày.`;
+    showModal('💡 YÊU CẦU CHUYÊN KHOA Y TẾ', reqText, '🔬');
+  }
+
+  function goToSlide(index) {
+    if (index < 0 || index >= totalSlides) return;
+    playBeep();
+    document.querySelectorAll('.slide').forEach(s => s.classList.remove('active'));
+    currentSlide = index;
+    document.getElementById(`slide-${currentSlide}`).classList.add('active');
+
+    document.getElementById('slideCounter').innerText = `Slide ${currentSlide + 1} / ${totalSlides}`;
+    document.getElementById('stageBadge').innerText = stages[currentSlide] || 'Khoa Dinh dưỡng';
+    document.getElementById('btnPrev').disabled = (currentSlide === 0);
+    document.getElementById('btnNext').disabled = (currentSlide === totalSlides - 1);
+
+    renderDrawerList();
+    if (currentSlide === 9) {
+      setTimeout(redrawLines, 100);
+    }
+    if (currentSlide === 17) { triggerConfetti(); playFanfareSound(); }
+  }
+
+  function nextSlide() { goToSlide(currentSlide + 1); }
+  function prevSlide() { goToSlide(currentSlide - 1); }
+
+  // Keyboard navigation
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight') nextSlide();
+    if (e.key === 'ArrowLeft') prevSlide();
+  });
+
+  // Drawer Sidebar
+  function toggleDrawer() {
+    document.getElementById('drawer').classList.toggle('open');
+    document.getElementById('drawerOverlay').classList.toggle('open');
+  }
+
+  function renderDrawerList() {
+    const list = document.getElementById('drawerList');
+    list.innerHTML = '';
+    slideTitles.forEach((t, i) => {
+      const item = document.createElement('div');
+      item.className = `drawer-item ${i === currentSlide ? 'active' : ''}`;
+      item.innerText = t;
+      item.onclick = () => { goToSlide(i); toggleDrawer(); };
+      list.appendChild(item);
+    });
+  }
+
+  // Timers - ONLY RUNS WHEN USER CLICKS THE BUTTON
+  function startTimer(id, durationSeconds) {
+    if (timerIntervals[id]) clearInterval(timerIntervals[id]);
+    let timer = durationSeconds;
+    const el = document.getElementById(id);
+    if (!el) return;
+
+    playStampSound();
+    timerIntervals[id] = setInterval(() => {
+      const minutes = parseInt(timer / 60, 10);
+      const seconds = parseInt(timer % 60, 10);
+      el.innerText = `${minutes < 10 ? '0' + minutes : minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
+      if (--timer < 0) {
+        clearInterval(timerIntervals[id]);
+        showModal('HẾT GIỜ THẢO LUẬN!', 'Thời gian dành cho hoạt động đã hết. Các kíp trực hãy chốt kết quả!', '⏰');
+      }
+    }, 1000);
+  }
+
+  /* SLIDE 5: KEYWORD SELECTION WITH PLAIN TEXT INITIALLY, FLASHING HIGHLIGHT 2 TIMES & STRIKE-UNDERLINE AFTER SELECTION */
+  function checkHabitKeyword(elementId, isBadHabit, habitName) {
+    const el = document.getElementById(elementId);
+    if (!el || el.classList.contains('found')) return;
+
+    if (isBadHabit) {
+      playStampSound();
+      // Add flashing highlight animation
+      el.classList.add('flashing');
+      
+      setTimeout(() => {
+        el.classList.remove('flashing');
+        el.classList.add('found');
+        foundHabitsCount++;
+        document.getElementById('foundCount').innerText = foundHabitsCount;
+
+        showModal('ĐÃ CHẨN ĐOÁN THÓI QUÊN CÓ HẠI! 🎯', `Thói quen [${habitName}] đã được phát hiện và gạch chân chuẩn y khoa!`, '✅');
+        
+        if (foundHabitsCount === 5) {
+          setTimeout(() => {
+            showModal('XUẤT SẮC! 🏆', 'Kíp trực đã gạch chân đủ 5 thói quen ăn uống có hại trong 3 hồ sơ bệnh án!', '🎉');
+          }, 600);
+        }
+      }, 900);
+    }
+  }
+
+  // HĐ2 Tap-to-Connect Matrix Game with SVG Connecting Lines
+  let selectedLeft = null;
+  let matchedPairs = [];
+  const matchMap = { 1: 'B', 2: 'A', 3: 'C', 4: 'E', 5: 'D' };
+
+  function drawConnectingLine(leftId, rightId) {
+    const container = document.getElementById('matrixContainer');
+    const svg = document.getElementById('matrixSvg');
+    const leftEl = document.getElementById(`left-${leftId}`);
+    const rightEl = document.getElementById(`right-${rightId}`);
+    if (!container || !svg || !leftEl || !rightEl) return;
+
+    const containerRect = container.getBoundingClientRect();
+    const leftRect = leftEl.getBoundingClientRect();
+    const rightRect = rightEl.getBoundingClientRect();
+
+    const x1 = leftRect.right - containerRect.left;
+    const y1 = leftRect.top + (leftRect.height / 2) - containerRect.top;
+    const x2 = rightRect.left - containerRect.left;
+    const y2 = rightRect.top + (rightRect.height / 2) - containerRect.top;
+
+    const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    line.setAttribute('x1', x1);
+    line.setAttribute('y1', y1);
+    line.setAttribute('x2', x2);
+    line.setAttribute('y2', y2);
+    line.setAttribute('stroke', '#059669');
+    line.setAttribute('stroke-width', '4.5');
+    line.setAttribute('stroke-linecap', 'round');
+
+    svg.appendChild(line);
+  }
+
+  function redrawLines() {
+    const svg = document.getElementById('matrixSvg');
+    if (!svg) return;
+    svg.innerHTML = '';
+    matchedPairs.forEach(pair => drawConnectingLine(pair.left, pair.right));
+  }
+
+  window.addEventListener('resize', redrawLines);
+
+  function selectLeft(id) {
+    playBeep();
+    if (document.getElementById(`left-${id}`).classList.contains('matched')) return;
+    document.querySelectorAll('.matrix-col:first-child .matrix-item').forEach(el => el.classList.remove('selected'));
+    document.getElementById(`left-${id}`).classList.add('selected');
+    selectedLeft = id;
+  }
+
+  function selectRight(code) {
+    playBeep();
+    if (!selectedLeft) {
+      showModal('HƯỚNG DẪN', 'Vui lòng bấm chọn 1 Hệ cơ quan ở Cột Trái trước!', '💡');
+      return;
+    }
+    if (matchMap[selectedLeft] === code) {
+      playStampSound();
+      const currentLeft = selectedLeft;
+      document.getElementById(`left-${currentLeft}`).classList.remove('selected');
+      document.getElementById(`left-${currentLeft}`).classList.add('matched');
+      document.getElementById(`right-${code}`).classList.add('matched');
+
+      // Add to matchedPairs & draw SVG line connecting the 2 cards
+      matchedPairs.push({ left: currentLeft, right: code });
+      drawConnectingLine(currentLeft, code);
+
+      showModal('GHÉP NỐI CHÍNH XÁC! ✨', 'Đã tạo đường nối thành công! Hệ cơ quan đã được bổ sung nhóm dưỡng chất chuẩn y khoa!', '👏');
+      selectedLeft = null;
+    } else {
+      showModal('CHƯA CHÍNH XÁC!', 'Nhóm dưỡng chất chưa đúng với nhu cầu của hệ cơ quan này. Hãy thử lại!', '❌');
+    }
+  }
+
+  // HĐ3 Nutrient Station Drag & Drop Progressive Game (No pop-ups, Green/Red flash feedback)
+  let stationProgress = {
+    'than-kinh': 0,
+    'co-xuong': 0,
+    'da-noi-tiet': 0
+  };
+
+  function dragStart(e) {
+    e.dataTransfer.setData("text/plain", e.target.id);
+    e.dataTransfer.effectAllowed = "move";
+  }
+
+  function allowDrop(e) {
+    e.preventDefault();
+    e.currentTarget.classList.add('drag-over');
+  }
+
+  function leaveDrop(e) {
+    e.currentTarget.classList.remove('drag-over');
+  }
+
+  function dropNutrient(e, stationId) {
+    e.preventDefault();
+    e.currentTarget.classList.remove('drag-over');
+    const cardId = e.dataTransfer.getData("text/plain");
+    const card = document.getElementById(cardId);
+    if (card) {
+      processNutrientDrop(card, stationId);
+    }
+  }
+
+  function clickNutrientCard(cardEl) {
+    if (cardEl.classList.contains('disabled')) return;
+    const target = cardEl.getAttribute('data-target');
+    
+    if (target === 'bad') {
+      processNutrientDrop(cardEl, 'than-kinh');
+    } else {
+      processNutrientDrop(cardEl, target);
+    }
+  }
+
+  function processNutrientDrop(cardEl, stationId) {
+    if (cardEl.classList.contains('disabled')) return;
+
+    const targetStation = cardEl.getAttribute('data-target');
+    const foodName = cardEl.getAttribute('data-name');
+    const stationCard = document.getElementById(`st-${stationId}`);
+
+    // If bad card OR wrong target station -> Flash Red & Snapback (NO POPUP!)
+    if (targetStation === 'bad' || targetStation !== stationId) {
+      playBeep();
+
+      if (stationCard) {
+        stationCard.classList.remove('flash-red-anim', 'flash-green-anim');
+        void stationCard.offsetWidth;
+        stationCard.classList.add('flash-red-anim');
+      }
+
+      cardEl.classList.remove('card-snapback-anim');
+      void cardEl.offsetWidth;
+      cardEl.classList.add('card-snapback-anim');
+
+      setTimeout(() => {
+        if (stationCard) stationCard.classList.remove('flash-red-anim');
+        cardEl.classList.remove('card-snapback-anim');
+      }, 600);
+
+      return;
+    }
+
+    // CORRECT DROP! Flash Green & Progressively Increase Energy Bar (NO POPUP!)
+    playStampSound();
+    cardEl.classList.add('disabled');
+
+    if (stationCard) {
+      stationCard.classList.remove('flash-red-anim', 'flash-green-anim');
+      void stationCard.offsetWidth;
+      stationCard.classList.add('flash-green-anim');
+      setTimeout(() => {
+        stationCard.classList.remove('flash-green-anim');
+      }, 600);
+    }
+
+    stationProgress[stationId] = Math.min(100, stationProgress[stationId] + 25);
+    const currentProgress = stationProgress[stationId];
+
+    const bar = document.getElementById(`bar-${stationId}`);
+    const percentText = document.getElementById(`percent-${stationId}`);
+    const tagContainer = document.getElementById(`tag-${stationId}`);
+
+    if (bar && percentText && tagContainer) {
+      bar.style.width = `${currentProgress}%`;
+      
+      const newTag = document.createElement('div');
+      newTag.className = 'food-tag-station';
+      newTag.innerText = foodName;
+      tagContainer.appendChild(newTag);
+
+      if (currentProgress >= 100) {
+        if (stationCard) stationCard.classList.add('filled');
+        percentText.innerText = '100% ⚡ NẠP ĐẦY';
+        percentText.style.color = '#059669';
+        percentText.style.fontWeight = '900';
+      } else {
+        percentText.innerText = `${currentProgress}% ⚡`;
+      }
+
+      // Check if ALL 3 Stations are 100% Filled -> TRIGGER CONFETTI & FANFARE!
+      if (stationProgress['than-kinh'] >= 100 && stationProgress['co-xuong'] >= 100 && stationProgress['da-noi-tiet'] >= 100) {
+        setTimeout(() => {
+          triggerConfetti();
+          playFanfareSound();
+          showModal('KÍCH HOẠT THÀNH CÔNG 100%! ⚡🏆', 'Xuất sắc! Cả 3 Trạm Dưỡng Chất (Thần kinh, Cơ xương, Da & Nội tiết) đã được nạp đầy 100% năng lượng chuẩn Y khoa tuổi dậy thì!', '🎉');
+        }, 500);
+      }
+    }
+  }
+
+  function rejectUnhealthyFood(name) {
+    playBeep();
+  }
+
+  // Habit Commitment
+  function toggleHabit(el) {
+    playBeep();
+    el.classList.toggle('checked');
+  }
+
+  // Confetti Canvas Animation
+  function triggerConfetti() {
+    const canvas = document.getElementById('confettiCanvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const particles = [];
+    const colors = ['#0F766E', '#0C4E4B', '#059669', '#DC2626', '#D97706'];
+
+    for (let i = 0; i < 120; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height - canvas.height,
+        size: Math.random() * 10 + 5,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        speedY: Math.random() * 5 + 3,
+        speedX: Math.random() * 2 - 1
+      });
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(p => {
+        p.y += p.speedY;
+        p.x += p.speedX;
+        ctx.fillStyle = p.color;
+        ctx.fillRect(p.x, p.y, p.size, p.size);
+      });
+      if (particles.some(p => p.y < canvas.height)) {
+        requestAnimationFrame(animate);
+      }
+    }
+    animate();
+  }
+
+  // Initialize
+  renderDrawerList();
+</script>
+</body>
+</html>
