@@ -1137,23 +1137,23 @@ html_content = """<!DOCTYPE html>
 
   const stages = [
     "Khoa Dinh dưỡng - Nova Hospital",
-    "Mục tiêu bài học (K-S-A)",
-    "Nhiệm vụ bài học",
     "Giai đoạn 1: Mở khóa ca bệnh",
-    "Giai đoạn 2: Nhận ca bệnh",
-    "Giai đoạn 3: Khám bệnh",
-    "Giai đoạn 3: Chẩn đoán & Chốt bài",
-    "Hội chẩn 5 Bác sĩ chuyên khoa",
-    "Quy trình 3 bước hội chẩn",
-    "Giai đoạn 4: Hội chẩn y khoa",
-    "Giai đoạn 4: Chốt kiến thức cốt lõi",
-    "Kê đơn phác đồ",
-    "Mô hình 3 Trạm Dưỡng chất",
-    "Giai đoạn 5: Kê đơn phác đồ",
-    "Giai đoạn 5: Thực đơn mẫu thẩm định",
-    "Sơ đồ tư duy 3 nhánh",
-    "Học sinh tự viết A4",
-    "Giai đoạn 6: Kế hoạch chăm sóc & Vinh danh"
+    "Giai đoạn 1: Nhiệm vụ bài học",
+    "Giai đoạn 2: Nhận hồ sơ bệnh án",
+    "Giai đoạn 2: Quy trình 3 bước nhận ca",
+    "Giai đoạn 3: Khám bệnh lâm sàng",
+    "Giai đoạn 3: Chẩn đoán bệnh án",
+    "Giai đoạn 4: Chẩn đoán nguyên nhân",
+    "Giai đoạn 4: Quy trình 3 bước chẩn đoán",
+    "Giai đoạn 5: Hội chẩn y khoa",
+    "Giai đoạn 5: Chốt kiến thức cốt lõi",
+    "Giai đoạn 6: Kê đơn phác đồ",
+    "Giai đoạn 6: Mô hình 3 Trạm Dưỡng chất",
+    "Giai đoạn 6: Kích hoạt Trạm Dưỡng chất",
+    "Giai đoạn 6: Đáp án Phác đồ thẩm định",
+    "Giai đoạn 7: Nhật ký bác sĩ",
+    "Giai đoạn 7: Cam kết dinh dưỡng cá nhân",
+    "Giai đoạn 8: Thói quen khỏe mạnh & Vinh danh"
   ];
 
   const slideTitles = [
