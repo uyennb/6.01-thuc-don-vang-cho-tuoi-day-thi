@@ -845,7 +845,7 @@ html_content = """<!DOCTYPE html>
           </div>
           <div class="card">
             <div class="card-title" style="color: #DC2626;">❌ Uống ít nước lọc</div>
-            <div class="card-desc">Độc tố không thể đào thải ➔ Bề mặt da nhờn mụn, cơ thể mệt mỏi thiếu sức sống.</div>
+            <div class="card-desc">Độc tố không thể đào thải ➔ Bề mặt da nhờn mụn, cơ thể uể uể thiếu sức sống.</div>
           </div>
         </div>
         <div style="background: #FEF3C7; border: 2px solid #D97706; padding: 18px 30px; border-radius: 20px; text-align: center; width: 100%;">
@@ -1652,10 +1652,7 @@ html_content = """<!DOCTYPE html>
 base_dir = '/Users/nguyenbaouyen/Documents/Chuong-trinh-he-THCS/He-Lop6/H6.01-Thuc-don-vang-cho-tuoi-day-thi'
 os.makedirs(os.path.join(base_dir, 'slides'), exist_ok=True)
 
-with open(os.path.join(base_dir, 'slides', 'index.html'), 'w', encoding='utf-8') as f:
-    f.write(html_content)
+with open(os.path.join(base_dir, 'generate_slides.py'), 'w', encoding='utf-8') as f:
+    f.write(py_code)
 
-with open(os.path.join(base_dir, 'index.html'), 'w', encoding='utf-8') as f:
-    f.write(html_content)
-
-print("Successfully generated 22 slides with Stage Banner Slides!")
+print("generate_slides.py updated to 22 slides successfully!")

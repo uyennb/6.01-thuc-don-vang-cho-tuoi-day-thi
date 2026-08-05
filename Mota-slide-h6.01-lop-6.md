@@ -25,32 +25,36 @@
 
 ---
 
-## II. MA TRẬN 18 SLIDES THEO TIẾN TRÌNH HOẠT ĐỘNG & GIAI ĐOẠN CONCEPT BÁC SĨ
+## II. MA TRẬN 22 SLIDES THEO TIẾN TRÌNH 8 GIAI ĐOẠN CONCEPT BÁC SĨ (MỞ RỘNG)
 
 | Slide | Tên Slide Quy chuẩn | Hoạt động / Cấu phần | Giai đoạn Concept Bác sĩ Tích hợp |
 | :---: | :--- | :--- | :--- |
 | **Slide 1** | **Mở đầu bài học** | Mở đầu Khởi động | *(Khoa Dinh dưỡng - Nova Hospital)* |
 | **Slide 2** | **Mục tiêu bài học (K-S-A)** | Mục tiêu bài học | **Giai đoạn 1: Mở khóa ca bệnh** |
 | **Slide 3** | **Nhiệm vụ bài học** | Nhiệm vụ bài học | **Giai đoạn 1: Nhiệm vụ bài học** |
-| **Slide 4** | **Hoạt động 1: Báo động dinh dưỡng** | Giới thiệu HĐ1 | **Giai đoạn 2: Nhận hồ sơ bệnh án** |
-| **Slide 5** | **Hoạt động 1: Hướng dẫn phân tích ca bệnh** | Hướng dẫn HĐ1 (3 bước) | **Giai đoạn 2: Quy trình 3 bước nhận ca** |
-| **Slide 6** | **Hoạt động 1: Trò chơi Giải mã Bệnh án** | Thực hành HĐ1 (Timer nút bấm) | **Giai đoạn 3: Khám bệnh lâm sàng** |
-| **Slide 7** | **Hoạt động 1: Đáp án & Chốt bài HĐ1** | Đáp án & Kết luận HĐ1 | **Giai đoạn 3: Chẩn đoán bệnh án** |
-| **Slide 8** | **Hoạt động 2: Giới thiệu Hoạt động 2** | Giới thiệu HĐ2 | **Giai đoạn 4: Chẩn đoán nguyên nhân** |
-| **Slide 9** | **Hoạt động 2: Hướng dẫn ghép nối Dưỡng chất** | Hướng dẫn HĐ2 (3 bước) | **Giai đoạn 4: Quy trình 3 bước chẩn đoán** |
-| **Slide 10** | **Hoạt động 2: Trò chơi Chạm nối Ma trận 5 hệ** | Thực hành HĐ2 (Timer nút bấm) | **Giai đoạn 5: Hội chẩn y khoa** |
-| **Slide 11** | **Hoạt động 2: Đáp án & Chốt kiến thức**| Đáp án & Kết luận HĐ2 | **Giai đoạn 5: Chốt kiến thức cốt lõi** |
-| **Slide 12** | **Hoạt động 3: Giới thiệu Hoạt động 3** | Giới thiệu HĐ3 | **Giai đoạn 6: Kê đơn phác đồ** |
-| **Slide 13** | **Hoạt động 3: Hướng dẫn Trạm Dưỡng chất** | Hướng dẫn HĐ3 (3 bước) | **Giai đoạn 6: Mô hình 3 Trạm Dưỡng chất** |
-| **Slide 14** | **Hoạt động 3: Trò chơi Kích hoạt Trạm Dưỡng chất** | Thực hành HĐ3 (Timer nút bấm) | **Giai đoạn 6: Kích hoạt Trạm Dưỡng chất** |
-| **Slide 15** | **Hoạt động 3: Đáp án Phác đồ 3 Hệ cơ quan** | Đáp án & Đóng dấu HĐ3 | **Giai đoạn 6: Đáp án Phác đồ thẩm định** |
-| **Slide 16** | **Sơ đồ tư duy Tổng kết bài học** | Tổng kết toàn bài | **Giai đoạn 7: Nhật ký bác sĩ** |
-| **Slide 17** | **Bảng cam kết dinh dưỡng cá nhân** | Cam kết hành vi | **Giai đoạn 7: Cam kết dinh dưỡng cá nhân** |
-| **Slide 18** | **Vinh danh & Trao Bằng Bác sĩ Nội trú** | Vinh danh & Kết thúc | **Giai đoạn 8: Thói quen khỏe mạnh & Vinh danh** |
+| **Slide 4** | **Stage Banner Giai đoạn 2** | Chuyển cảnh Giai đoạn | **Giai đoạn 2: Nhận hồ sơ bệnh án** |
+| **Slide 5** | **Hoạt động 1: Báo động dinh dưỡng** | Giới thiệu HĐ1 | **Giai đoạn 2: Báo động dinh dưỡng** |
+| **Slide 6** | **Hoạt động 1: Hướng dẫn phân tích ca bệnh** | Hướng dẫn HĐ1 (3 bước) | **Giai đoạn 2: Hướng dẫn 3 bước** |
+| **Slide 7** | **Stage Banner Giai đoạn 3** | Chuyển cảnh Giai đoạn | **Giai đoạn 3: Khám bệnh lâm sàng** |
+| **Slide 8** | **Hoạt động 1: Trò chơi Giải mã Bệnh án** | Thực hành HĐ1 (Timer 03:00) | **Giai đoạn 3: Game Giải mã thói quen** |
+| **Slide 9** | **Hoạt động 1: Đáp án & Chốt bài HĐ1** | Đáp án & Kết luận HĐ1 | **Giai đoạn 3: Đáp án HĐ1** |
+| **Slide 10** | **Stage Banner Giai đoạn 4** | Chuyển cảnh Giai đoạn | **Giai đoạn 4: Chẩn đoán nguyên nhân** |
+| **Slide 11** | **Hoạt động 2: Giới thiệu Hoạt động 2** | Giới thiệu HĐ2 | **Giai đoạn 4: Giới thiệu HĐ2** |
+| **Slide 12** | **Hoạt động 2: Hướng dẫn ghép nối Dưỡng chất** | Hướng dẫn HĐ2 (3 bước) | **Giai đoạn 4: Hướng dẫn 3 bước** |
+| **Slide 13** | **Stage Banner Giai đoạn 5** | Chuyển cảnh Giai đoạn | **Giai đoạn 5: Hội chẩn y khoa** |
+| **Slide 14** | **Hoạt động 2: Trò chơi Chạm nối Ma trận 5 hệ** | Thực hành HĐ2 (Timer 05:00) | **Giai đoạn 5: Game Chạm nối Ma trận** |
+| **Slide 15** | **Hoạt động 2: Đáp án & Chốt kiến thức**| Đáp án & Kết luận HĐ2 | **Giai đoạn 5: Chốt 3 yếu tố + 3 nguyên tắc** |
+| **Slide 16** | **Stage Banner Giai đoạn 6** | Chuyển cảnh Giai đoạn | **Giai đoạn 6: Kê đơn phác đồ** |
+| **Slide 17** | **Hoạt động 3: Giới thiệu Mô hình 3 Trạm** | Giới thiệu HĐ3 | **Giai đoạn 6: Mô hình 3 Trạm Dưỡng chất** |
+| **Slide 18** | **Hoạt động 3: Hướng dẫn Trạm Dưỡng chất** | Hướng dẫn HĐ3 (3 bước) | **Giai đoạn 6: Hướng dẫn 3 bước** |
+| **Slide 19** | **Hoạt động 3: Trò chơi Kích hoạt Trạm Dưỡng chất** | Thực hành HĐ3 (Timer 05:00) | **Giai đoạn 6: Drag & Drop Nạp 100%** |
+| **Slide 20** | **Hoạt động 3: Đáp án Phác đồ 3 Hệ cơ quan** | Đáp án & Đóng dấu HĐ3 | **Giai đoạn 6: Đáp án Phác đồ thẩm định** |
+| **Slide 21** | **Nhật ký bác sĩ & Cam kết A4** | Tổng kết & Cam kết | **Giai đoạn 7: Nhật ký bác sĩ & Cam kết A4** |
+| **Slide 22** | **Vinh danh & Trao Bằng Bác sĩ Nội trú** | Vinh danh & Kết thúc | **Giai đoạn 8: Thói quen khỏe mạnh & Vinh danh** |
 
 ---
 
-## III. NỘI DUNG MÔ TẢ CHI TIẾT 18 SLIDES QUY CHUẨN
+## III. NỘI DUNG MÔ TẢ CHI TIẾT 22 SLIDES QUY CHUẨN
 
 ---
 
