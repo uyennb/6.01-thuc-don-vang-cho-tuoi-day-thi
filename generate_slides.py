@@ -1195,7 +1195,7 @@ html_content = """<!DOCTYPE html>
           <p style="font-size: 20px; color: #475569; font-weight: 700;">Khoa Dinh dưỡng - Bệnh viện Nova Hospital 2026</p>
         </div>
         <button class="btn-action" style="font-size: 20px; padding: 18px 45px;" onclick="triggerConfetti(); playFanfareSound();">
-          🎉 BẮN PHÁO HOA CHÚC MỪNG GIAI ĐOẠN 8
+          🎉 BẮN PHÁO HOA CHÚC MỪNG
         </button>
       </div>
     </section>
